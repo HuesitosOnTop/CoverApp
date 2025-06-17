@@ -3,6 +3,8 @@ package Libraries;
 import java.io.*;
 import java.util.Scanner;
 
+import Libraries.TableHandler;
+
 public class FileHandler {
 	private static String current_dir = System.getProperty("user.dir");
 
@@ -41,6 +43,7 @@ public class FileHandler {
 		return output;
 	}
 
+<<<<<<< Updated upstream
 	public static void listCovers() {
 		int line_number = 1;
 		try {
@@ -61,16 +64,16 @@ public class FileHandler {
 	}
 
 	public static String createCover(String name, int start_time, int end_time, boolean completed) {
+=======
+	public static String createCover(String name, String type, int total_time, boolean completed) {
+>>>>>>> Stashed changes
 		try {
 			FileWriter writer = new FileWriter(covers_dat);
 
-			int total_time = end_time - start_time;
-
 			String template =
-			"songname=" + name + ";" +
-			"totaltime=" + total_time + ";" +
-			"from=" + start_time + ";" +
-			"to=" + end_time + ";" +
+			"songname=" +  name + ";" +
+			"length=" +    total_time + ";" +
+			"type=" + 	   type + ";" +
 			"completed=" + completed + ";";
 
 			writer.write(template);
@@ -82,4 +85,40 @@ public class FileHandler {
 
 		return "Successfully created cover.";
 	}
+<<<<<<< Updated upstream
+=======
+
+	public static void listCovers() {
+		int line_number = 1;
+		try {
+			Scanner file_reader = new Scanner(covers_dat);
+			if (covers_dat.length() == 0) {
+				System.out.println("There are no covers.");
+			} else {
+				TableHandler.TableHeaderMaker(4, 160);
+				while (file_reader.hasNextLine()) {
+					String lines = file_reader.nextLine();
+					int semicolon = lines.indexOf(';');
+					int equals = lines.indexOf('=');
+
+					String song_name = lines.substring(equals + 1, semicolon);
+					
+					TableHandler.CreateRow(line_number, song_name);
+					line_number++;
+				}
+				TableHandler.TableFooterMaker();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void editCover(int cover_choice, int edit_choice) {
+		
+	}
+
+	public static void deleteCover() {
+		System.out.println("yes");
+	}
+>>>>>>> Stashed changes
 }
