@@ -1,9 +1,5 @@
-<<<<<<< Updated upstream
-songname=Afterlife;totaltime=3;from-3;to=6;completed=true;
-=======
 songname=Natural Born Killer;length=30;type=Riff;completed=false;
 songname=Afterlife;length=60;type=Solo;completed=false;
 songname=Nobody;length=45;type=Chorus;completed=false;
 songname=Sidewinder;length=60;type=Outro;completed=false;
 songname=Beast and the Harlot;length=45;type=Chorus;completed=true;
->>>>>>> Stashed changes

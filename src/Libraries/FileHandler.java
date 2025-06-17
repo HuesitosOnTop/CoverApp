@@ -43,7 +43,6 @@ public class FileHandler {
 		return output;
 	}
 
-<<<<<<< Updated upstream
 	public static void listCovers() {
 		int line_number = 1;
 		try {
@@ -63,10 +62,7 @@ public class FileHandler {
 		}
 	}
 
-	public static String createCover(String name, int start_time, int end_time, boolean completed) {
-=======
 	public static String createCover(String name, String type, int total_time, boolean completed) {
->>>>>>> Stashed changes
 		try {
 			FileWriter writer = new FileWriter(covers_dat);
 
@@ -85,8 +81,6 @@ public class FileHandler {
 
 		return "Successfully created cover.";
 	}
-<<<<<<< Updated upstream
-=======
 
 	public static void listCovers() {
 		int line_number = 1;
@@ -120,5 +114,4 @@ public class FileHandler {
 	public static void deleteCover() {
 		System.out.println("yes");
 	}
->>>>>>> Stashed changes
 }

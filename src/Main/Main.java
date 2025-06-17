@@ -11,11 +11,8 @@ public class Main {
 		String[] choices = {
 			"Create a cover",
 			"Edit a cover",
-<<<<<<< Updated upstream
-=======
 			"Delete a cover",
 			"Search for a cover",
->>>>>>> Stashed changes
 			"Close the program"
 		};
 
@@ -40,15 +37,6 @@ public class Main {
 			input.nextLine();
 
 			switch (selected_choice) {
-<<<<<<< Updated upstream
-				case 1: 
-					FileHandler.createCover("Afterlife", 3, 6, true);
-					break;
-				case 2:
-					FileHandler.listCovers();
-					break;
-				case 3: 
-=======
 				case 1:
 					System.out.print("Song name: ");
 					String song_name = input.nextLine();
@@ -81,7 +69,6 @@ public class Main {
 				case 5:
 					break;
 				case 6:
->>>>>>> Stashed changes
 					loop_runner = false;
 					break;
 				default: 
