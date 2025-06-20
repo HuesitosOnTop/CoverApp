@@ -10,7 +10,7 @@ public class FileHandler {
 
 	private static File files_folder = new File(current_dir + File.separator + "Files");
 	private static File covers_dat = new File(files_folder.getAbsolutePath() + "\\Covers.dat");
-	private static File preferences_dat = new File(files_folder.getAbsolutePath() + "\\Preferences.dat");
+	private static File preferences_dat = new File(files_folder.getAbsolutePath() + "\\Settings.dat");
 	private static File[] all_files = {
 		files_folder,
 		covers_dat,
@@ -20,8 +20,7 @@ public class FileHandler {
 	public static String CreateDependecies() {
 		int total_files_created = 0;
 		
-
-		if (!files_folder.exists()) {
+		if (!files_folder.exists() || !covers_dat.exists() || !preferences_dat.exists()) {
 			files_folder.mkdir();
 			try {
 				covers_dat.createNewFile();
@@ -43,37 +42,19 @@ public class FileHandler {
 		return output;
 	}
 
-	public static void listCovers() {
-		int line_number = 1;
+	public static String createCover(String name, String type, int total_time, int difficulty, boolean completed) {
 		try {
-			Scanner file_reader = new Scanner(covers_dat);
-			while (file_reader.hasNextLine()) {
-				String lines = file_reader.nextLine();
-				int semicolon = lines.indexOf(';');
-				int equals = lines.indexOf('=');
-
-				String new_line = lines.substring(equals + 1, semicolon);
-				
-				System.out.println(line_number + ". " + new_line);
-				line_number++;
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static String createCover(String name, String type, int total_time, boolean completed) {
-		try {
-			FileWriter writer = new FileWriter(covers_dat);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(covers_dat, true));
 
 			String template =
-			"songname=" +  name + ";" +
-			"length=" +    total_time + ";" +
-			"type=" + 	   type + ";" +
-			"completed=" + completed + ";";
+			"songname="  + name       + ";" +
+			"length="    + total_time + ";" +
+			"type="      + type       + ";" +
+			"difficulty="+ difficulty + ";" +
+			"completed=" + completed  + ";";
 
+			writer.newLine();
 			writer.write(template);
-
 			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -89,13 +70,14 @@ public class FileHandler {
 			if (covers_dat.length() == 0) {
 				System.out.println("There are no covers.");
 			} else {
-				TableHandler.TableHeaderMaker(4, 160);
+				System.out.print("\033[H\033[2J");
+				TableHandler.TableHeaderMaker(5, 200);
 				while (file_reader.hasNextLine()) {
 					String lines = file_reader.nextLine();
 					int semicolon = lines.indexOf(';');
 					int equals = lines.indexOf('=');
 
-					String song_name = lines.substring(equals + 1, semicolon);
+					String song_name = lines.substring(equals + 1,semicolon);
 					
 					TableHandler.CreateRow(line_number, song_name);
 					line_number++;

@@ -18,57 +18,57 @@ public class Main {
 
 		boolean loop_runner = true;
 
+		BannerHandler.CreateBanner();
 		System.out.println(FileHandler.CreateDependecies());
 		System.out.println("Welcome to the Cover Manager App.");
 
 		File covers_dat = new File(currentDir + "\\Files\\Covers.dat");
-		File preferences_dat = new File(currentDir + "\\Files\\Preferences.dat");
+		File preferences_dat = new File(currentDir + "\\Files\\Settings.dat");
 
 		Scanner input = new Scanner(System.in);
 
 		while (loop_runner) {
 			System.out.println("Choose one of the choices below: ");
-
-			for(int i = 0; i < choices.length; i++) {
-				System.out.println((i+1) + ". " + choices[i]);
-			}
+			ArrayHandler.listArray(choices);
 
 			int selected_choice = input.nextInt();
 			input.nextLine();
 
 			switch (selected_choice) {
 				case 1:
+					ConsoleHandler.ClearConsole();
 					System.out.print("Song name: ");
 					String song_name = input.nextLine();
-					System.out.print("What type is the cover: ");
+					System.out.print("What type is the cover (Verse, Chorus, Bridge, Solo, Harmonies): ");
 					String song_type = input.nextLine();
-					System.out.print("Length of cover: ");
+					System.out.print("Length of cover (1-60): ");
 					int length = input.nextInt();
+					System.out.print("Difficulty (1-5): ");
+					int difficulty = input.nextInt();
 					System.out.print("Completed (true/false): ");
 					boolean completed = input.nextBoolean();
 
-					FileHandler.createCover(song_name, song_type, length, completed);
+					FileHandler.createCover(song_name, song_type, length, difficulty, completed);
 					break;
 				case 2:
-					break;
-				case 3:
+					ConsoleHandler.ClearConsole();
 					FileHandler.listCovers();
-					System.out.println("Choose what you'd like to edit (9 -> Go back): ");
+					System.out.println("Choose the cover you'd like to edit.");
 					
 					selected_choice = input.nextInt();
 					switch (selected_choice) {
 						case 9:
 							break;
 						default:
-							System.out.println("The choice you entered was invalid");
+							break;
 					}
-
+					break;
+				case 3:
 					break;
 				case 4: 
 					break;
 				case 5:
-					break;
-				case 6:
+					ConsoleHandler.ClearConsole();
 					loop_runner = false;
 					break;
 				default: 
