@@ -1,9 +1,10 @@
-package Libraries;
+package Libraries.Utilities;
 
 // THIS IS A WIP
 
 public class ColorHandler {
 	public static void GetColors() {
+        // CHANGE RETURN TYPE FROM A VOID TO STRING ARRAY
 		String[] colors = {
 			"\u001B[30m", // Black                 0
             "\u001B[31m", // Red                   1 
@@ -24,6 +25,5 @@ public class ColorHandler {
             "\u001B[0m"   // Reset                16
 		};
 
-		return colors;
 	}
 }

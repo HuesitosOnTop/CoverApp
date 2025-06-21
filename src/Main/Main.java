@@ -3,7 +3,8 @@ package Main;
 import java.util.*;
 import java.io.*;
 
-import Libraries.*;
+import Libraries.Utilities.*;
+import Libraries.MainHandlers.*;
 
 public class Main {
 	public static void main(String args[]) {

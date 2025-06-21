@@ -1,4 +1,4 @@
-package Libraries;
+package Libraries.Utilities;
 
 public class ArrayHandler {
 	// This file is used to handle array-specific tasks

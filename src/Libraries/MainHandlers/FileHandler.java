@@ -1,16 +1,16 @@
-package Libraries;
+package Libraries.MainHandlers;
 
 import java.io.*;
 import java.util.Scanner;
 
-import Libraries.TableHandler;
+import Libraries.MainHandlers.TableHandler;
 
 public class FileHandler {
 	private static String current_dir = System.getProperty("user.dir");
 
 	private static File files_folder = new File(current_dir + File.separator + "Files");
-	private static File covers_dat = new File(files_folder.getAbsolutePath() + "\\Covers.dat");
-	private static File preferences_dat = new File(files_folder.getAbsolutePath() + "\\Settings.dat");
+	private static File covers_dat = new File(files_folder.getAbsolutePath() + File.separator + "Covers.dat");
+	private static File preferences_dat = new File(files_folder.getAbsolutePath() + File.separator + "Settings.dat");
 	private static File[] all_files = {
 		files_folder,
 		covers_dat,

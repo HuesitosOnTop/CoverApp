@@ -1,6 +1,6 @@
-package Libraries;
+package Libraries.Utilities;
 
-import Libraries.ColorHandler;
+import Libraries.Utilities.ColorHandler;
 
 public class ConsoleHandler {
 	// This file is used to handle console related events
@@ -10,8 +10,10 @@ public class ConsoleHandler {
 	}
 
 	public static void ColorText(int chosen_color) {
-		String[] colors = ColorHandler.GetColors();
+		String[] colors = {
+			"hi"
+		};
 
-		System.out.print(colors[chosen_color]);
+		System.out.print(colors[0]);
 	}
 }
