@@ -1,5 +1,7 @@
 package Libraries.MainHandlers;
 
+import java.io.*;
+
 public class ProfileHandler {
 	/*
 		Profiles should ask for:
@@ -8,14 +10,16 @@ public class ProfileHandler {
 			Settings? -- Maybe
 	*/
 
-
-	public void FetchProfiles() {
+	public static void FetchProfiles() {
 		// Gets user-created Profiles
 	}
-	public void CreateProfile() {
-		// Creates a user profile
+	public static void LoadLastProfile(String profile) {
+		// Automatically loads the last profile the user was on
 	}
-	public void DeleteProfile() {
+	public static void CreateProfile() {
+		File profile;
+	}
+	public static void DeleteProfile() {
 		// Deletes a user profile
 	}
 }
