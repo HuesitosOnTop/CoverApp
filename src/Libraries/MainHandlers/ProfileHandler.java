@@ -7,7 +7,8 @@ public class ProfileHandler {
 		Profiles should ask for:
 			Profile Name
 			Instrument
-			Settings? -- Maybe
+			Global Settings:
+				Load Last Profile
 	*/
 
 	public static void FetchProfiles() {
@@ -17,7 +18,7 @@ public class ProfileHandler {
 		// Automatically loads the last profile the user was on
 	}
 	public static void CreateProfile() {
-		File profile;
+		// Creates a profile
 	}
 	public static void DeleteProfile() {
 		// Deletes a user profile

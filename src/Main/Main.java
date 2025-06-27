@@ -19,6 +19,7 @@ public class Main {
 
 		boolean loop_runner = true;
 
+		ConsoleHandler.ClearConsole();
 		BannerHandler.CreateBanner();
 		System.out.println(FileHandler.CreateDependecies());
 		System.out.println("Welcome to the Cover Manager App.");
