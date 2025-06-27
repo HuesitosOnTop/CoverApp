@@ -8,14 +8,6 @@ public class BannerHandler {
 
 	public static void CreateBanner() {
         String[] colors = {
-			"\u001B[30m", // Black                 0
-            "\u001B[31m", // Red                   1 
-            "\u001B[32m", // Green                 2
-            "\u001B[33m", // Yellow                3
-            "\u001B[34m", // Blue                  4
-            "\u001B[35m", // Magenta               5
-            "\u001B[36m", // Cyan                  6
-            "\u001B[37m", // White                 7
             "\u001B[90m", // Bright Black (Gray)   8
             "\u001B[91m", // Bright Red            9
             "\u001B[92m", // Bright Green         10
@@ -40,9 +32,9 @@ public class BannerHandler {
             StringBuilder colored_banner = new StringBuilder();
             for (char c : line.toCharArray()) {
                 if (c == '$') {
-                    colored_banner.append(colors[3]).append(c).append(colors[16]);
+                    colored_banner.append(colors[11]).append(c).append(colors[16]);
                 } else if (c == '/' || c == '\\' || c == '_' || c == '|') {
-                    colored_banner.append(colors[7]).append(c).append(colors[16]);
+                    colored_banner.append(colors[15]).append(c).append(colors[16]);
                 } else {
                     colored_banner.append(c);
                 }
