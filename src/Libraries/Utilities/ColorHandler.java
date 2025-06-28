@@ -5,18 +5,18 @@ import Libraries.Utilities.OSHandler;
 public class ColorHandler {
 
     /*
-    Bright Black (Gray)   1
-    Bright Red            2
-    Bright Green          3
-    Bright Yellow         4
-    Bright Blue           5
-    Bright Magenta        6
-    Bright Cyan           7
-    Bright White          8
-    Reset                 9
+    Bright Black (Gray)   0
+    Bright Red            1
+    Bright Green          2
+    Bright Yellow         3
+    Bright Blue           4
+    Bright Magenta        5
+    Bright Cyan           6
+    Bright White          7
+    Reset                 8
     */
 
-    private static String[] win_colors = {
+    private static String[] colors = {
     "\u001B[90m", // 
     "\u001B[91m", // 
     "\u001B[92m", // 
@@ -27,26 +27,8 @@ public class ColorHandler {
     "\u001B[97m", // 
     "\u001B[0m"    
     };
-    private static String[] lin_colors = {
-    "\u001B[90m", // 
-    "\u001B[91m", // 
-    "\u001B[92m", // 
-    "\u001B[93m", // 
-    "\u001B[94m", // 
-    "\u001B[95m", // 
-    "\u001B[96m", // 
-    "\u001B[97m", // 
-    "\u001B[0m" 
-    };
-    private static String[] chosen_array = {};
 
-	public static String[] GetColors() {
-        String os = OSHandler.getOS();
-
-        if (os.equals("windows")) {
-            chosen_array = win_colors;
-        } else {
-            chosen_array = lin_colors;
-        }
+	public static String GetColor(int chosen_color) {
+       return colors[chosen_color];
 	}
 }

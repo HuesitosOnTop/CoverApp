@@ -7,17 +7,10 @@ public class BannerHandler {
 	// This file just creates the banner
 
 	public static void CreateBanner() {
-        String[] colors = {
-            "\u001B[90m", // Bright Black (Gray)   8
-            "\u001B[91m", // Bright Red            9
-            "\u001B[92m", // Bright Green         10
-            "\u001B[93m", // Bright Yellow        11
-            "\u001B[94m", // Bright Blue          12
-            "\u001B[95m", // Bright Magenta       13
-            "\u001B[96m", // Bright Cyan          14
-            "\u001B[97m", // Bright White         15
-            "\u001B[0m"   // Reset                16
-		};
+        final String yellow = ColorHandler.GetColor(3);
+        final String white = ColorHandler.GetColor(7);
+        final String reset = ColorHandler.GetColor(8);
+
 		String[] banner = {
 			" /$$$$$$$             /$$$$$$  /$$                                 /$$",
 			"| $$__  $$           /$$__  $$| $$                                | $$",
@@ -32,9 +25,9 @@ public class BannerHandler {
             StringBuilder colored_banner = new StringBuilder();
             for (char c : line.toCharArray()) {
                 if (c == '$') {
-                    colored_banner.append(colors[11]).append(c).append(colors[16]);
+                    colored_banner.append(yellow).append(c).append(reset);
                 } else if (c == '/' || c == '\\' || c == '_' || c == '|') {
-                    colored_banner.append(colors[15]).append(c).append(colors[16]);
+                    colored_banner.append(white).append(c).append(reset);
                 } else {
                     colored_banner.append(c);
                 }
