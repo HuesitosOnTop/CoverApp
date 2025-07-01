@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import Libraries.Utilities.ColorHandler;
 
 public class TableHandler {
+
+	// Colors
+	private static final String yellow = ColorHandler.GetColor(3);
+	private static final String white = ColorHandler.GetColor(7);
+	private static final String reset = ColorHandler.GetColor(8);
+
 	// Characters
 	private static String top_barrier_char = "_";
 	private static String barrier_char = "|";
@@ -15,10 +21,6 @@ public class TableHandler {
 
 	private static ArrayList<Integer> section_index = new ArrayList<Integer>();
 	private static StringBuilder middle_row = new StringBuilder();
-
-	private static final String yellow = ColorHandler.GetColor(3);
-	private static final String white = ColorHandler.GetColor(7);
-	private static final String reset = ColorHandler.GetColor(8);
 
 	public static void CreateRow(int number, String name) {
 		StringBuilder row = new StringBuilder();
@@ -34,7 +36,7 @@ public class TableHandler {
 			}
 		}
 
-		String content = white + barrier_char + yellow + number + ". " + white + name;
+		String content = barrier_char + number + ". " + name;
 		
 		int insert_index = section_index.get(0);
 

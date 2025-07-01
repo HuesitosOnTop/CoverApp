@@ -74,8 +74,8 @@ public class FileHandler {
 				TableHandler.TableHeaderMaker(5, 200);
 				while (file_reader.hasNextLine()) {
 					String lines = file_reader.nextLine();
+					int equals = lines.indexOf("=");
 					int semicolon = lines.indexOf(';');
-					int equals = lines.indexOf('=');
 
 					String song_name = lines.substring(equals + 1,semicolon);
 					

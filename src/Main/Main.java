@@ -8,8 +8,10 @@ import Libraries.MainHandlers.*;
 
 public class Main {
 	public static void main(String args[]) {
-		String currentDir = System.getProperty("user.dir");
-		String[] choices = {
+		String current_dir = System.getProperty("user.dir");
+		String main_profile_path = "";
+
+		String[] cover_choices = {
 			"Create a cover",
 			"Edit a cover",
 			"Delete a cover",
@@ -17,65 +19,78 @@ public class Main {
 			"Close the program"
 		};
 
+		String[] profile_choices = {
+			"Load a profile",
+			"Create a Profile",
+			"Delete a Profile",
+			"Edit a Profile",
+			"Exit"
+		};
+
 		boolean loop_runner = true;
 
 		ConsoleHandler.ClearConsole();
 		BannerHandler.CreateBanner();
-		System.out.println(FileHandler.CreateDependecies());
-		System.out.println("Welcome to the Cover Manager App.");
-
-		File covers_dat = new File(currentDir + "\\Files\\Covers.dat");
-		File preferences_dat = new File(currentDir + "\\Files\\Settings.dat");
 
 		Scanner input = new Scanner(System.in);
 
+		File main_profile_folder = new File(main_profile_path);
+
 		while (loop_runner) {
-			System.out.println("Choose one of the choices below: ");
-			ArrayHandler.listArray(choices);
-
-			int selected_choice = input.nextInt();
-			input.nextLine();
-
-			switch (selected_choice) {
-				case 1:
-					ConsoleHandler.ClearConsole();
-					System.out.print("Song name: ");
-					String song_name = input.nextLine();
-					System.out.print("What type is the cover (Verse, Chorus, Bridge, Solo, Harmonies): ");
-					String song_type = input.nextLine();
-					System.out.print("Length of cover (1-60): ");
-					int length = input.nextInt();
-					System.out.print("Difficulty (1-5): ");
-					int difficulty = input.nextInt();
-					System.out.print("Completed (true/false): ");
-					boolean completed = input.nextBoolean();
-
-					FileHandler.createCover(song_name, song_type, length, difficulty, completed);
+			// Checks to see if the user is new
+			switch (UserHandler.isNewUser(current_dir)) {
+				case "true":
+					System.out.println("Welcome back USER");
 					break;
-				case 2:
-					ConsoleHandler.ClearConsole();
-					FileHandler.listCovers();
-					System.out.println("Choose the cover you'd like to edit.");
-					
-					selected_choice = input.nextInt();
-					switch (selected_choice) {
-						case 9:
+				case "false":
+					System.out.println("It seems this is you're first time running ReChord" + "\n" + "What would you like to be called?");
+
+					// Creates the main profile folder
+					main_profile_path = ProfileHandler.CreateMainProfileFolder();
+
+					// Gets the users username and saves it
+					String response = input.next().toLowerCase();
+
+					// Ask the user whether they want a tutorial
+					System.out.println("Would you like a tutorial? (Y/N)");
+					response = input.next().toLowerCase();
+					switch (response) {
+						case "y":
+							break;
+						case "n":
 							break;
 						default:
-							break;
+							System.out.println("It seems like the answer you responded with was not Y or N, try again.");
 					}
+				default:
+					System.out.println("idk -\\_(-_-)_/-"); // This is 5 am me speaking after being awake for 18 hours :)
+			}		
+			System.out.println("Select your action:");
+			ArrayHandler.listArray(profile_choices);
+
+			int int_response = input.nextInt();
+			switch (int_response) {
+				case 1:
+					if (main_profile_folder.length() == 0) {
+						System.out.println("There are no profiles, try creating one.");
+					} else {
+						// Do something to get the profiles
+					}
+					break;
+				case 2:
+					ProfileHandler.CreateProfile();
 					break;
 				case 3:
 					break;
-				case 4: 
+				case 4:
 					break;
 				case 5:
-					ConsoleHandler.ClearConsole();
 					loop_runner = false;
-					break;
-				default: 
-					System.out.println("The choice you've entered is not one of the choices above, try again.");
+					ConsoleHandler.ClearConsole();
+				default:
+					System.out.println("The number you've entered is not within the range, please try again");
+					ConsoleHandler.ClearConsole();
 			}
-		}	
+		}
 	}
 }
